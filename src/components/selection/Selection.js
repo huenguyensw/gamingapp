@@ -1,6 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
+import UserSelectionForm from '../userSelectionForm/UserSelectionForm'
 
-const Selection = () => {
+const Selection = ({gameMode, player1, player2}) => {
+  const [choice, setChoice] = useState(false);
+  
+  if(gameMode === 1){
+    if(!choice){
+      return (
+        <UserSelectionForm playerName = {player1} choice={choice} setChoice={setChoice}/>
+      )
+    } else{
+      return (
+        <UserSelectionForm playerName = {player2} choice={choice} setChoice={setChoice}/>
+      )
+    }
+  } else if(gameMode === 2){
+    if(!choice){
+      return (
+        <UserSelectionForm playerName = {player1} choice={choice} setChoice={setChoice}/>
+      )
+    } else{
+      return (
+        <UserSelectionForm playerName={'computer'} choice={choice} setChoice={setChoice}/>
+      )
+    }
+  }
   return (
     <div>
       {/* 
@@ -14,6 +38,8 @@ const Selection = () => {
       after user made a choice. computer screen is shown with only notification: computer is choosing or something else. Don't show computer's choice on the screen.
       list of results are updated.
        */}
+
+      
 
     </div>
   )
