@@ -1,10 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
-import Selection from './components/selection/Selection';
-import History from './components/history/History';
-
+import Playing from './components/playing/Playing';
 
 function App() {
   const [player1, setPlayer1] = useState(''); //show play1's name
@@ -15,8 +13,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <Selection/>
-      <History />
+      <Playing/>
       <Footer/>
     </div>
   );
