@@ -1,10 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
-import Selection from './components/selection/Selection';
-import History from './components/history/History';
-
+import Playing from './components/playing/Playing';
 
 function App() {
   const [player1, setPlayer1] = useState(''); //show play1's name
@@ -15,9 +13,13 @@ function App() {
   return (
     <div className="App">
       <Header/>
+<<<<<<< HEAD
       {gameMode===1?<Selection player1={player1} player2={player2} choiceOfPlay1={choiceOfPlay1} choiceOfPlay2={choiceOfPlay2}/>
       : gameMode===2? <Selection player1={player1} computer={'computer'} choiceOfPlay1={choiceOfPlay1} choiceOfComputer={choiceOfComputer}/>:null}
       <History results={results}/>
+=======
+      <Playing/>
+>>>>>>> 76f9a0a20e6dd07b72e08372d8a6f1370044ae3a
       <Footer/>
     </div>
   );
