@@ -1,35 +1,29 @@
 import React, { useState } from 'react';
 
-const Header = () => {
-  // Declare state variables for game mode, player names, and number of plays
-  const [gameMode, setGameMode] = useState('human-human');
-  const [player1Name, setPlayer1Name] = useState('');
-  const [player2Name, setPlayer2Name] = useState('');
-  const [numPlays, setNumPlays] = useState('');
-
+const Header = ({player1, player2,setPlayer1,setPlayer2,setGameMode,gameMode}) => {
+  
   // Event handlers for changing state variables
   const handleGameModeChange = (event) => {
     setGameMode(event.target.value);
+    console.log(event.target.value)
   };
   const handlePlayer1NameChange = (event) => {
-    setPlayer1Name(event.target.value);
+    setPlayer1(event.target.value);
   };
   const handlePlayer2NameChange = (event) => {
-    setPlayer2Name(event.target.value);
+    setPlayer2(event.target.value);
   };
-  const handleNumPlaysChange = (event) => {
-    setNumPlays(event.target.value);
-  };
+  
 
   // Render player 2 name field based on game mode
-  const player2NameField = gameMode === 'human-human' ? (
+  const player2NameField = gameMode === '1' ? (
     <div>
       <label htmlFor="player2Name">
         Player 2 name:
         <input 
           type="text" 
           id="player2Name"
-          value={player2Name} 
+          value={player2} 
           onChange={handlePlayer2NameChange} 
           aria-label="Enter Player 2 Name"
         />
@@ -51,8 +45,8 @@ const Header = () => {
             onChange={handleGameModeChange}
             aria-label="Select Game Mode"
           >
-            <option value="human-human">Human vs Human</option>
-            <option value="human-computer">Human vs Computer</option>
+            <option value='1'>Human vs Human</option>
+            <option value="2">Human vs Computer</option>
           </select>
         </label>
       </div>
@@ -63,27 +57,13 @@ const Header = () => {
           <input 
             type="text" 
             id="player1Name"
-            value={player1Name} 
+            value={player1} 
             onChange={handlePlayer1NameChange} 
             aria-label="Enter Player 1 Name"
           />
         </label>
       </div>
-      {/* Render player 2 name input (if game mode is human-human) */}
-      {player2NameField}
-      {/* Render number of plays input */}
-      <div>
-        {/* <label htmlFor="numPlays">
-          Number of plays: */}
-          {/* <input 
-            type="text" 
-            id="numPlays"
-            value={numPlays} 
-            onChange={handleNumPlaysChange} 
-            aria-label="Enter Number of Plays"
-          /> */}
-        {/* </label> */}
-      </div>
+     {player2NameField}
     </div>
   );
 };
