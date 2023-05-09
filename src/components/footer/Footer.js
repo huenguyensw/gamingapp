@@ -1,13 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-const Footer = () => {
+function Footer() {
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const handleQuitGameButton = () => {
+    setShowConfirmation(true);
+  };
+
+  const handleCancelQuitGameButton = () => {
+    setShowConfirmation(false);
+  };
+
+  const handleConfirmQuitGameButton = () => {
+    setShowConfirmation(false);
+  };
+
   return (
-    <div className='footer'>
-      <button>Quit game</button>
-
-      <p> &#169; Hue, Liza, Nadya och Nikola	</p>
+    <div className="footer">
+      <p>© 2023 Rock Paper Scissors Game</p>
+      <button onClick={handleQuitGameButton}>Quit game</button>
+      {showConfirmation && (
+        <div className="confirmation-dialog">
+          <p>Are you sure you want to end the game?</p>
+          <button onClick={handleConfirmQuitGameButton}>Yes</button>
+          <button onClick={handleCancelQuitGameButton}>No</button>
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
+
+
