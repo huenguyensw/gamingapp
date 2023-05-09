@@ -1,6 +1,25 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-areas: 
+  "header header"
+  "selection history"
+  "footer footer";
+  row-gap: 150px;;
 }
+.header{
+  grid-area: header;
+}
+.selection{
+  grid-area: selection;
+}
+.history{
+  grid-area: history;
+}
+.footer{
+  grid-area: footer;
+}
+
 
 .selection-container{
   display: flex;
@@ -25,4 +44,17 @@
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
+  cursor: pointer;
+}
+.playing-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 70px;
+  
+}
+.playing-icons{
+  padding: 15px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
