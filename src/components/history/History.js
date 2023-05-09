@@ -29,6 +29,10 @@ const History = ({ results }) => {
 
 
   return (
+    <div>
+
+      <h3> Moves :</h3>
+      <hr />
     <table className='history'>
       <thead>
         <tr>
@@ -63,6 +67,7 @@ const History = ({ results }) => {
       })}
       </tbody>
     </table>
+    </div>
   )
 }
 

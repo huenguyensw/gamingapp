@@ -23,6 +23,8 @@ const Selection = ({ gameMode, setGameMode, player1, player2, setResults, result
 
   return (
     <div className='selection'>
+
+      
       <section >
         {gameMode == 1
           ? (<div className='playing-container'>
@@ -35,7 +37,7 @@ const Selection = ({ gameMode, setGameMode, player1, player2, setResults, result
         }
       </section>
       {(updatedResult && gameMode != null)
-      &&<div>
+      &&<div className='buttons'>
         <button onClick={handlePlaying}>Play again</button>
         <button onClick={handleExitGame}>End game</button>
       </div>}
