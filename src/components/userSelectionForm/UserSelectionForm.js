@@ -15,28 +15,39 @@ const UserSelectionForm = ({ playerName, choiced, setChoiceOfPlayer, choiceOfPla
     currentResult.current.push({name: playerName, choice: val});
     results[playerName] = (results[playerName] || []).concat([val]);
     setResults(results);
-    console.log(val)
-    console.log(results)
+    
     choiced.current = choiced.current + 1;
     if (choiced.current == 2 && gameMode == 1) {
       setUpdatedResult(true);
-      console.log(currentResult);
-      console.log(currentResult.current[0].name);
+      
       if((currentResult.current[0].choice == currentResult.current[1].choice - 1)|| (currentResult.current[1].choice == currentResult.current[0].choice - 2)){
-        setWinner(currentResult.current[0].name)
+        setWinner(`${currentResult.current[0].name} Win!`)
       } else if((currentResult.current[1].choice == currentResult.current[0].choice - 1)|| (currentResult.current[0].choice == currentResult.current[1].choice - 2)){
-        setWinner(currentResult.current[1].name)
-      } 
+        setWinner(`${currentResult.current[1].name} Win!`)
+      } else {
+        setWinner('It is a Tie')
+      }
+      currentResult.current = [];
       choiced.current = 0;
     }
     if (gameMode == 2 && choiced.current == 1) {
       choiced.current = choiced.current + 1;
       const randomInt = Math.floor(Math.random() * 3);
       results['computer'] = (results['computer'] || []).concat([randomInt]);
-      console.log(results);
+      currentResult.current.push({name: 'computer', choice: randomInt});
+      if((currentResult.current[0].choice == currentResult.current[1].choice - 1)|| (currentResult.current[1].choice == currentResult.current[0].choice - 2)){
+        setWinner(`${currentResult.current[0].name} Win!`)
+      } else if((currentResult.current[1].choice == currentResult.current[0].choice - 1)|| (currentResult.current[0].choice == currentResult.current[1].choice - 2)){
+        setWinner(`Regret!${currentResult.current[0].name} you lost this time!`)
+      }
+      else {
+        setWinner('It is a Tie')
+      }
+      
       setResults(results);
       setUpdatedResult(true);
       choiced.current = 0;
+      currentResult.current = [];
     }
   }
 
