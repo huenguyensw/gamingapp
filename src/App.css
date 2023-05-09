@@ -48,7 +48,6 @@
 /* Styles for the header */
 .header {
   grid-area: header;
-  
   font-size: 1.3rem;
 }
 
