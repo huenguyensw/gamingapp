@@ -39,7 +39,7 @@ const Header = () => {
 
   // Render header component
   return (
-    <div className='header'>
+    <div>
       <h1>Rock Paper Scissors</h1>
       {/* Render game mode selection */}
       <div>
@@ -73,16 +73,16 @@ const Header = () => {
       {player2NameField}
       {/* Render number of plays input */}
       <div>
-        <label htmlFor="numPlays">
-          Number of plays:
-          <input 
+        {/* <label htmlFor="numPlays">
+          Number of plays: */}
+          {/* <input 
             type="text" 
             id="numPlays"
             value={numPlays} 
             onChange={handleNumPlaysChange} 
             aria-label="Enter Number of Plays"
-          />
-        </label>
+          /> */}
+        {/* </label> */}
       </div>
     </div>
   );
