@@ -20,7 +20,7 @@ const Header = ({player1, player2,setPlayer1,setPlayer2,setGameMode,gameMode}) =
     <div>
       <label htmlFor="player2Name">
         Player 2 name:
-        <input 
+        <input className='text'
           type="text" 
           id="player2Name"
           value={player2} 
@@ -33,13 +33,27 @@ const Header = ({player1, player2,setPlayer1,setPlayer2,setGameMode,gameMode}) =
 
   // Render header component
   return (
-    <div>
-      <h1>Rock Paper Scissors</h1>
+    <div className='header'>
+      <h1><span className='rock'>Rock</span> <span className='paper'>Paper</span> <span className='scissor'>Scissors</span></h1>
       {/* Render game mode selection */}
-      <div>
+     
+      <div className='game-container'>
+        
+      
+      {/* Render player 1 name input */}
+        <label htmlFor="player1Name">
+          Player 1 name:
+          <input className='text'
+            type="text" 
+            id="player1Name"
+            value={player1} 
+            onChange={handlePlayer1NameChange} 
+            aria-label="Enter Player 1 Name"
+          />
+        </label>
         <label htmlFor="gameMode">
           Game mode:
-          <select 
+          <select className='text'
             id="gameMode"
             value={gameMode} 
             onChange={handleGameModeChange}
@@ -49,21 +63,18 @@ const Header = ({player1, player2,setPlayer1,setPlayer2,setGameMode,gameMode}) =
             <option value="2">Human vs Computer</option>
           </select>
         </label>
-      </div>
-      {/* Render player 1 name input */}
-      <div>
-        <label htmlFor="player1Name">
-          Player 1 name:
-          <input 
+        <label htmlFor="player2Name">
+          Player 2 name:
+          <input className='text'
             type="text" 
-            id="player1Name"
-            value={player1} 
-            onChange={handlePlayer1NameChange} 
-            aria-label="Enter Player 1 Name"
+            id="player2Name"
+            value={player2} 
+            onChange={handlePlayer2NameChange} 
+            aria-label="Enter Player 2 Name"
           />
-        </label>
-      </div>
-     {player2NameField}
+        </label>      
+        </div>
+     
     </div>
   );
 };
