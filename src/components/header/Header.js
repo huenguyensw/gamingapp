@@ -26,28 +26,36 @@ const Header = () => {
     <div>
       <label htmlFor="player2Name">
         Player 2 name:
-        <input 
-          type="text" 
+        <input
+          type="text"
           id="player2Name"
-          value={player2Name} 
-          onChange={handlePlayer2NameChange} 
+          value={player2Name}
+          onChange={handlePlayer2NameChange}
           aria-label="Enter Player 2 Name"
         />
       </label>
     </div>
   ) : null;
 
+  // const text = "Rock Scissors Paper";
+  // const colors = ["red", "blue", "black"];
+  // // let output = "";
+
+  // // for (let i = 0; i < text.length; i++) {
+  // //   const color = colors[i % colors.length];
+  // //   output += <span style="color:${color}">${text[i]}</span>;
+  // }
   // Render header component
   return (
     <div className='header'>
-      <h1>Rock Paper Scissors</h1>
+      <h1><span className='rock'>Rock </span><span className='paper'>Paper </span><span className='scissor'>Scissors</span></h1>
       {/* Render game mode selection */}
       <div>
         <label htmlFor="gameMode">
           Game mode:
-          <select 
+          <select
             id="gameMode"
-            value={gameMode} 
+            value={gameMode}
             onChange={handleGameModeChange}
             aria-label="Select Game Mode"
           >
@@ -60,11 +68,11 @@ const Header = () => {
       <div>
         <label htmlFor="player1Name">
           Player 1 name:
-          <input 
-            type="text" 
+          <input
+            type="text"
             id="player1Name"
-            value={player1Name} 
-            onChange={handlePlayer1NameChange} 
+            value={player1Name}
+            onChange={handlePlayer1NameChange}
             aria-label="Enter Player 1 Name"
           />
         </label>
@@ -75,11 +83,11 @@ const Header = () => {
       <div>
         <label htmlFor="numPlays">
           Number of plays:
-          <input 
-            type="text" 
+          <input
+            type="text"
             id="numPlays"
-            value={numPlays} 
-            onChange={handleNumPlaysChange} 
+            value={numPlays}
+            onChange={handleNumPlaysChange}
             aria-label="Enter Number of Plays"
           />
         </label>
