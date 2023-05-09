@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 
 const Header = () => {
+  // Declare state variables for game mode, player names, and number of plays
   const [gameMode, setGameMode] = useState('human-human');
   const [player1Name, setPlayer1Name] = useState('');
   const [player2Name, setPlayer2Name] = useState('');
   const [numPlays, setNumPlays] = useState('');
 
+  // Event handlers for changing state variables
   const handleGameModeChange = (event) => {
     setGameMode(event.target.value);
   };
-
   const handlePlayer1NameChange = (event) => {
     setPlayer1Name(event.target.value);
   };
-
   const handlePlayer2NameChange = (event) => {
     setPlayer2Name(event.target.value);
   };
-
   const handleNumPlaysChange = (event) => {
     setNumPlays(event.target.value);
   };
@@ -41,12 +40,6 @@ const Header = () => {
   // Render header component
   return (
     <div>
-<<<<<<< HEAD
-      {/* display a title
-      Game modes: two options: 1- human vs human and 2- human vs computer
-      input fields: displays according to the chosen mode. it means that if user chooses option 1, two input fields are shown correspoinding to username 1 and 2. Similar to option 2, only one input field is shown to enter username
-      number of plays (opional because it is not required) */}
-=======
       <h1>Rock Paper Scissors</h1>
       {/* Render game mode selection */}
       <div>
@@ -63,6 +56,7 @@ const Header = () => {
           </select>
         </label>
       </div>
+      {/* Render player 1 name input */}
       <div>
         <label htmlFor="player1Name">
           Player 1 name:
@@ -90,10 +84,8 @@ const Header = () => {
           />
         </label>
       </div>
->>>>>>> 76f9a0a20e6dd07b72e08372d8a6f1370044ae3a
     </div>
   );
 };
 
 export default Header;
-
