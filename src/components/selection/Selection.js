@@ -3,7 +3,7 @@ import UserSelectionForm from '../userSelectionForm/UserSelectionForm'
 
 const Selection = ({ gameMode, setGameMode, player1, player2,
    setResults, results, updatedResult, setUpdatedResult, 
-   player1TotalScore,player2TotalScore, setPlayer1TotalScore, setPlayer2TotalScore  }) => {
+   player1TotalScore,player2TotalScore, setPlayer1TotalScore, setPlayer2TotalScore, setPlaying  }) => {
   const [choiceOfPlay1, setChoiceOfPlay1] = useState(null); //save choice of play1
   const [choiceOfPlay2, setChoiceOfPlay2] = useState(null); //save choice of play2
   const [choiceOfComputer, setChoiceOfComputer] = useState(null); //save choice of play2
@@ -18,11 +18,12 @@ const Selection = ({ gameMode, setGameMode, player1, player2,
     setChoiceOfPlay2(null);
     setChoiceOfComputer(null);
     setWinner(null);
+    setPlaying(true);
   }
 
   const handleExitGame = () =>{
     setGameMode(2);
-    setResults([]);
+    setResults({});
     setPlayer1TotalScore(null);
     setPlayer2TotalScore(null);
     setWinner(null);
@@ -30,11 +31,10 @@ const Selection = ({ gameMode, setGameMode, player1, player2,
     setChoiceOfPlay1(null);
     setChoiceOfPlay2(null);
     setChoiceOfComputer(null);
-
+    setPlaying(false);
   }
    return (
     <div className='selection'>
-      <section >
         <p>Score: {player1TotalScore&&player1TotalScore} vs {player2TotalScore&&player2TotalScore} </p>
         <h2>{winner&& `${winner}`}</h2>
         {gameMode == 1
@@ -56,7 +56,6 @@ const Selection = ({ gameMode, setGameMode, player1, player2,
             setUpdatedResult={setUpdatedResult} updatedResult={updatedResult} currentResult={currentResult} setWinner={setWinner} /> </div>)
           : null
         }
-      </section>
       {(updatedResult)
       &&<div className='buttons'>
         <button onClick={handlePlaying}>Play again</button>

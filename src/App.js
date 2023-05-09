@@ -16,18 +16,19 @@ function App() {
   const [player2TotalScore, setPlayer2TotalScore] = useState(null);
   
   const [results, setResults] = useState({});
+  const [playing, setPlaying] = useState(null);
   
  
 
   return (
     <div className="App">
       <Header player1={player1} player2={player2}  gameMode={gameMode} setGameMode={setGameMode} 
-      setPlayer1={setPlayer1} setPlayer2={setPlayer2} updatedResult={updatedResult}/>
+      setPlayer1={setPlayer1} setPlayer2={setPlayer2} updatedResult={updatedResult} playing={playing}/>
       <h1 className='sub-title'> Let's play the game </h1>
       
       <Selection player1={player1} player2={player2}  gameMode={gameMode} setGameMode={setGameMode} 
       setResults={setResults} results={results} updatedResult={updatedResult} setUpdatedResult={setUpdatedResult}
-       player1TotalScore={player1TotalScore} player2TotalScore={player2TotalScore} 
+       player1TotalScore={player1TotalScore} player2TotalScore={player2TotalScore} setPlaying={setPlaying}
        setPlayer1TotalScore={setPlayer1TotalScore} setPlayer2TotalScore={setPlayer2TotalScore}/>
 
       <History results={results} updatedResult={updatedResult} setUpdatedResult={setUpdatedResult} 

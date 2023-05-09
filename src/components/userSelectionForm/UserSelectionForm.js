@@ -6,7 +6,7 @@ import { faHandScissors } from '@fortawesome/free-regular-svg-icons';
 
 
 
-const UserSelectionForm = ({ playerName, choiced, setChoiceOfPlayer, choiceOfPlayer, results, setResults, setUpdatedResult, updatedResult, gameMode, currentResult, setWinner }) => {
+const UserSelectionForm = ({ playerName, choiced, setChoiceOfPlayer, choiceOfPlayer, results, setResults, setUpdatedResult, gameMode, currentResult, setWinner }) => {
   
   
   const handleClick = (val) => {
@@ -21,11 +21,11 @@ const UserSelectionForm = ({ playerName, choiced, setChoiceOfPlayer, choiceOfPla
       setUpdatedResult(true);
       
       if((currentResult.current[0].choice == currentResult.current[1].choice - 1)|| (currentResult.current[1].choice == currentResult.current[0].choice - 2)){
-        setWinner(`${currentResult.current[0].name} Win!`)
+        setWinner(`${currentResult.current[0].name} won!`)
       } else if((currentResult.current[1].choice == currentResult.current[0].choice - 1)|| (currentResult.current[0].choice == currentResult.current[1].choice - 2)){
-        setWinner(`${currentResult.current[1].name} Win!`)
+        setWinner(`${currentResult.current[1].name} won!`)
       } else {
-        setWinner('It is a Tie')
+        setWinner('Draw!')
       }
       currentResult.current = [];
       choiced.current = 0;
@@ -36,12 +36,12 @@ const UserSelectionForm = ({ playerName, choiced, setChoiceOfPlayer, choiceOfPla
       results['computer'] = (results['computer'] || []).concat([randomInt]);
       currentResult.current.push({name: 'computer', choice: randomInt});
       if((currentResult.current[0].choice == currentResult.current[1].choice - 1)|| (currentResult.current[1].choice == currentResult.current[0].choice - 2)){
-        setWinner(`${currentResult.current[0].name} Win!`)
+        setWinner(`${currentResult.current[0].name} won!`)
       } else if((currentResult.current[1].choice == currentResult.current[0].choice - 1)|| (currentResult.current[0].choice == currentResult.current[1].choice - 2)){
-        setWinner(`Regret!${currentResult.current[0].name} you lost this time!`)
+        setWinner(`Regretfully! ${currentResult.current[0].name}, you have lost this time. Try again!`)
       }
       else {
-        setWinner('It is a Tie')
+        setWinner('Draw')
       }
       
       setResults(results);
@@ -52,9 +52,7 @@ const UserSelectionForm = ({ playerName, choiced, setChoiceOfPlayer, choiceOfPla
   }
 
   return (
-    <div className='selection-container'>
-      <section className='playing-container'>
-        <div >
+      <div className='player-section'>
           <h2>{playerName}</h2>
           {playerName == 'computer'
             ? <section>Picked random</section>
@@ -65,9 +63,7 @@ const UserSelectionForm = ({ playerName, choiced, setChoiceOfPlayer, choiceOfPla
                 <FontAwesomeIcon icon={faHandScissors} size='3x' className='scissor' onClick={() => handleClick(1)} />
               </section>
               : <p>You picked</p>}
-        </div>
-      </section>
-    </div>
+      </div>
   )
 }
 
