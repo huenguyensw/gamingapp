@@ -21,12 +21,18 @@ function App() {
 
   return (
     <div className="App">
-      <Header player1={player1} player2={player2}  gameMode={gameMode} setGameMode={setGameMode} setPlayer1={setPlayer1} setPlayer2={setPlayer2}/>
+      <Header player1={player1} player2={player2}  gameMode={gameMode} setGameMode={setGameMode} 
+      setPlayer1={setPlayer1} setPlayer2={setPlayer2} updatedResult={updatedResult}/>
       <h1 className='sub-title'> Let's play the game </h1>
+      
       <Selection player1={player1} player2={player2}  gameMode={gameMode} setGameMode={setGameMode} 
       setResults={setResults} results={results} updatedResult={updatedResult} setUpdatedResult={setUpdatedResult}
-       player1TotalScore={player1TotalScore} player2TotalScore={player2TotalScore} setPlayer1TotalScore={setPlayer1TotalScore} setPlayer2TotalScore={setPlayer2TotalScore}/>
-      <History results={results} updatedResult={updatedResult} setUpdatedResult={setUpdatedResult} player1TotalScore={player1TotalScore} setPlayer1TotalScore={setPlayer1TotalScore} setPlayer2TotalScore={setPlayer2TotalScore} player2TotalScore={player2TotalScore} />
+       player1TotalScore={player1TotalScore} player2TotalScore={player2TotalScore} 
+       setPlayer1TotalScore={setPlayer1TotalScore} setPlayer2TotalScore={setPlayer2TotalScore}/>
+
+      <History results={results} updatedResult={updatedResult} setUpdatedResult={setUpdatedResult} 
+      player1TotalScore={player1TotalScore} setPlayer1TotalScore={setPlayer1TotalScore} 
+      setPlayer2TotalScore={setPlayer2TotalScore} player2TotalScore={player2TotalScore} />
       <Footer/>
     </div>
   );

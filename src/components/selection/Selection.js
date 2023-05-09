@@ -17,19 +17,22 @@ const Selection = ({ gameMode, setGameMode, player1, player2,
     setChoiceOfPlay1(null);
     setChoiceOfPlay2(null);
     setChoiceOfComputer(null);
-    setWinner(null)
+    setWinner(null);
   }
 
   const handleExitGame = () =>{
-    setGameMode(null);
+    setGameMode(2);
     setResults([]);
     setPlayer1TotalScore(null);
     setPlayer2TotalScore(null);
     setWinner(null);
+    setUpdatedResult(false);
+    setChoiceOfPlay1(null);
+    setChoiceOfPlay2(null);
+    setChoiceOfComputer(null);
 
   }
-
-  return (
+   return (
     <div className='selection'>
       <section >
         <p>Score: {player1TotalScore&&player1TotalScore} vs {player2TotalScore&&player2TotalScore} </p>
@@ -54,7 +57,7 @@ const Selection = ({ gameMode, setGameMode, player1, player2,
           : null
         }
       </section>
-      {(updatedResult && gameMode != null)
+      {(updatedResult)
       &&<div className='buttons'>
         <button onClick={handlePlaying}>Play again</button>
         <button onClick={handleExitGame}>End game</button>

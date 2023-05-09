@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Header = ({player1, player2,setPlayer1,setPlayer2,setGameMode,gameMode}) => {
+const Header = ({player1, player2,setPlayer1,setPlayer2,setGameMode,gameMode, updatedResult}) => {
   
   // Event handlers for changing state variables
   const handleGameModeChange = (event) => {
@@ -26,6 +26,7 @@ const Header = ({player1, player2,setPlayer1,setPlayer2,setGameMode,gameMode}) =
           value={player2} 
           onChange={handlePlayer2NameChange} 
           aria-label="Enter Player 2 Name"
+          disabled={updatedResult ? true : false}
         />
       </label>
     </div>
@@ -44,6 +45,7 @@ const Header = ({player1, player2,setPlayer1,setPlayer2,setGameMode,gameMode}) =
             value={gameMode} 
             onChange={handleGameModeChange}
             aria-label="Select Game Mode"
+            disabled={updatedResult ? true : false}
           >
             <option value='1'>Human vs Human</option>
             <option value="2">Human vs Computer</option>
@@ -54,12 +56,13 @@ const Header = ({player1, player2,setPlayer1,setPlayer2,setGameMode,gameMode}) =
       <div>
         <label htmlFor="player1Name">
           Player 1 name:
-          <input 
+          <input
             type="text" 
             id="player1Name"
             value={player1} 
             onChange={handlePlayer1NameChange} 
             aria-label="Enter Player 1 Name"
+            disabled={updatedResult ? true : false}
           />
         </label>
       </div>
