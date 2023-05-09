@@ -39,7 +39,7 @@ const Header = () => {
 
   // Render header component
   return (
-    <div>
+    <div className='header'>
       <h1>Rock Paper Scissors</h1>
       {/* Render game mode selection */}
       <div>

@@ -1,19 +1,44 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
+import UserSelectionForm from '../userSelectionForm/UserSelectionForm'
 
-const Selection = () => {
+const Selection = ({ gameMode, setGameMode, player1, player2, setResults, results, updatedResult, setUpdatedResult }) => {
+  const [choiceOfPlay1, setChoiceOfPlay1] = useState(null); //save choice of play1
+  const [choiceOfPlay2, setChoiceOfPlay2] = useState(null); //save choice of play2
+  const [choiceOfComputer, setChoiceOfComputer] = useState(null); //save choice of play2
+  // to handle if both players are chosen
+  const choiced = useRef(0);
+
+  const handlePlaying = () =>{
+    setUpdatedResult(false);
+    setChoiceOfPlay1(null);
+    setChoiceOfPlay2(null);
+    setChoiceOfComputer(null);
+  }
+
+  const handleExitGame = () =>{
+    setGameMode(null);
+    setResults([])
+
+  }
+
   return (
-    <div>
-      {/* 
-      1-if human-human mode:
-      display user1's selection screen including 3 icons(rock, scissor, paper).
-       After user1 made a choice. user2's selection screen is displayed.
-       list of results are updated
-      
-      2-If human-computer mode:
-      display user's selection screen including 3 icons(rock, scissor, paper)
-      after user made a choice. computer screen is shown with only notification: computer is choosing or something else. Don't show computer's choice on the screen.
-      list of results are updated.
-       */}
+    <div className='selection'>
+      <section >
+        {gameMode == 1
+          ? (<div className='playing-container'>
+            <UserSelectionForm gameMode={gameMode} playerName={player1} choiced={choiced} choiceOfPlayer={choiceOfPlay1} setChoiceOfPlayer={setChoiceOfPlay1} results={results} setResults={setResults} setUpdatedResult={setUpdatedResult} updatedResult={updatedResult} />
+            <UserSelectionForm gameMode={gameMode} playerName={player2} choiced={choiced} choiceOfPlayer={choiceOfPlay2} setChoiceOfPlayer={setChoiceOfPlay2} results={results} setResults={setResults} setUpdatedResult={setUpdatedResult} updatedResult={updatedResult} /> </div>)
+          : gameMode == 2? (<div className='playing-container'>
+            <UserSelectionForm gameMode={gameMode} playerName={player1} choiced={choiced} choiceOfPlayer={choiceOfPlay1} setChoiceOfPlayer={setChoiceOfPlay1} results={results} setResults={setResults} setUpdatedResult={setUpdatedResult} updatedResult={updatedResult} />
+            <UserSelectionForm gameMode={gameMode} playerName={'computer'} choiced={choiced} choiceOfPlayer={choiceOfComputer} setChoiceOfPlayer={setChoiceOfComputer} results={results} setResults={setResults} setUpdatedResult={setUpdatedResult} updatedResult={updatedResult} /> </div>)
+          : null
+        }
+      </section>
+      {(updatedResult && gameMode != null)
+      &&<div>
+        <button onClick={handlePlaying}>Play again</button>
+        <button onClick={handleExitGame}>End game</button>
+      </div>}
 
     </div>
   )
