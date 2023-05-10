@@ -51,6 +51,7 @@
   font-size: 1.3rem;
 }
 
+
 /* Styles for the selection area */
 .selection {
   grid-area: selection;
@@ -111,7 +112,6 @@
 }
 
 /* Styles for the game container */
-/* Styles for the game container */
 .game-container {
   display: flex;
   flex-direction: row;
@@ -124,9 +124,9 @@
   display: flex;
   flex-direction: row;
   margin-top: 7px;
+  padding: 10px;
   justify-content: flex-end; /* Change to flex-start */
 }
-
 
 .text {
   padding: 5px;
