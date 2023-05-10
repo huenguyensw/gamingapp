@@ -51,9 +51,7 @@ const Selection = ({ gameMode, setGameMode, player1, player2,
             <UserSelectionForm gameMode={gameMode} playerName={player1} choiced={choiced} 
             choiceOfPlayer={choiceOfPlay1} setChoiceOfPlayer={setChoiceOfPlay1} results={results}
              setResults={setResults} setUpdatedResult={setUpdatedResult} updatedResult={updatedResult} currentResult={currentResult} setWinner={setWinner} />
-            <UserSelectionForm gameMode={gameMode} playerName={'computer'} choiced={choiced} 
-            choiceOfPlayer={choiceOfComputer} setChoiceOfPlayer={setChoiceOfComputer} results={results} setResults={setResults} 
-            setUpdatedResult={setUpdatedResult} updatedResult={updatedResult} currentResult={currentResult} setWinner={setWinner} /> </div>)
+            <UserSelectionForm  playerName={'computer'} /> </div>)
           : null
         }
       {(updatedResult)
