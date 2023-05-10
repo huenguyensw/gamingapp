@@ -55,10 +55,10 @@ const UserSelectionForm = ({ playerName, choiced, setChoiceOfPlayer, choiceOfPla
       <div className='player-section'>
           <h2>{playerName}</h2>
           {playerName == 'computer'
-            ? <section>Picked random</section>
+            ? <section data-testid='computerContent'>Picked random</section>
             : choiceOfPlayer == null
-              ? <section className='playing-icons'>
-                <FontAwesomeIcon icon={faHandRock} size='3x' className='rock' onClick={() => handleClick(0)} />
+              ? <section data-testid='playingIcons' className='playing-icons'>
+                <FontAwesomeIcon  data-testid='rockIcon' icon={faHandRock} size='3x' className='rock' onClick={() => handleClick(0)} />
                 <FontAwesomeIcon icon={faHandPaper} size='3x' className='paper' onClick={() => handleClick(2)} />
                 <FontAwesomeIcon icon={faHandScissors} size='3x' className='scissor' onClick={() => handleClick(1)} />
               </section>
