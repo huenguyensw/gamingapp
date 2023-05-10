@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import Selection from "../Selection";
 
 
-describe("userSelectionForm", () => {
+describe("Selection", () => {
     const setGameMode = jest.fn();
     const setResults = jest.fn();
     const setUpdatedResult = jest.fn();
