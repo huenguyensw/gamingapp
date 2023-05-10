@@ -78,10 +78,6 @@ const Header = ({player1, player2,setPlayer1,setPlayer2,setGameMode,gameMode, up
         </label> 
       </div>
       {/* Render player 1 name input */}
-      
-             
-        
-     
     </div>
   );
 };
