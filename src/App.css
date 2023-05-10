@@ -55,6 +55,7 @@
 /* Styles for the selection area */
 .selection {
   grid-area: selection;
+  font-size: 30px;
 }
 
 /* Styles for the history table */
