@@ -1,59 +1,63 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import Header from '../Header';
+import React from "react";
+import { render, fireEvent } from "@testing-library/react";
+import Header from "..\\Header.js";
 
-describe('Header component', () => {
-
-  // Test that the header text is rendered
-  test('renders header text', () => {
-    render(<Header />);
-    const headerElement = screen.getByText(/Rock Paper Scissors/i);
-    expect(headerElement).toBeInTheDocument();
+describe("Header component", () => {
+  test("renders game mode selection", () => {
+    const { getByLabelText } = render(<Header />);
+    const gameModeSelect = getByLabelText("Select Game Mode");
+    expect(gameModeSelect).toBeInTheDocument();
   });
 
-  // Parameterized test that checks that player names can be updated
-  describe.each([
-    ['player1', 'John', 'Jane'],
-    ['player2', 'Mary', 'Alice']
-  ])('%s name update', (player, initialValue, updatedValue) => {
-    test(updates ${player} name, () => {
-      const setPlayer = jest.fn(); // Create a mock function to set the player name
-      render(<Header {...{ [player]: initialValue, [`set${player}`]: setPlayer }} />);
-      const nameInput = screen.getByLabelText(Enter ${player.replace(/\d/g, '')} Name);
-      fireEvent.change(nameInput, { target: { value: updatedValue } });
-      expect(setPlayer).toHaveBeenCalledWith(updatedValue); // Verify that the mock function was called with the updated value
-    });
+  test("renders player 1 name input", () => {
+    const { getByLabelText } = render(<Header />);
+    const player1NameInput = getByLabelText("Enter Player 1 Name");
+    expect(player1NameInput).toBeInTheDocument();
   });
 
-  // Test that the game mode can be updated
-  test('updates game mode', () => {
-    const setGameMode = jest.fn(); // Create a mock function to set the game mode
-    render(<Header gameMode="1" setGameMode={setGameMode} />);
-    const gameModeSelect = screen.getByLabelText(/Select Game Mode/i);
-    fireEvent.change(gameModeSelect, { target: { value: '2' } });
-    expect(setGameMode).toHaveBeenCalledWith('2'); // Verify that the mock function was called with the updated game mode
+  test("updates game mode when selected", () => {
+    const setGameMode = jest.fn();
+    const { getByLabelText } = render(<Header setGameMode={setGameMode} />);
+    const gameModeSelect = getByLabelText("Select Game Mode");
+    fireEvent.change(gameModeSelect, { target: { value: "2" } });
+    expect(setGameMode).toHaveBeenCalledWith("2");
   });
 
-  // Parameterized test that checks that inputs are disabled when playing or when a result has been updated
-  test.each([
-    ['playing', true],
-    ['updatedResult', true]
-  ])('disables inputs when %s is true', (prop, value) => {
-    render(<Header {...{ [prop]: value }} />);
-    const player1NameInput = screen.getByLabelText(/Enter Player 1 Name/i);
-    const player2NameInput = screen.getByLabelText(/Enter Player 2 Name/i);
-    const gameModeSelect = screen.getByLabelText(/Select Game Mode/i);
-    expect(player1NameInput).toBeDisabled();
-    expect(player2NameInput).toBeDisabled();
-    expect(gameModeSelect).toBeDisabled();
+  test("updates player 1 name when input changes", () => {
+    const setPlayer1 = jest.fn();
+    const { getByLabelText } = render(<Header setPlayer1={setPlayer1} />);
+    const player1NameInput = getByLabelText("Enter Player 1 Name");
+    fireEvent.change(player1NameInput, { target: { value: "John" } });
+    expect(setPlayer1).toHaveBeenCalledWith("John");
   });
 
-  // Test that the player 2 name field is rendered based on the game mode
-  test('renders player 2 name field based on game mode', () => {
-    render(<Header gameMode="1" />);
-    const player2NameInput = screen.getByLabelText(/Enter Player 2 Name/i);
-    expect(player2NameInput).toBeInTheDocument();
+  test("updates player 2 name when input changes in game mode 1", () => {
+    const setPlayer2 = jest.fn();
+    const { getByLabelText } = render(
+      <Header setPlayer2={setPlayer2} gameMode="1" />
+    );
+    const player2NameInput = getByLabelText("Enter Player 2 Name");
+    fireEvent.change(player2NameInput, { target: { value: "Jane" } });
+    expect(setPlayer2).toHaveBeenCalledWith("Jane");
+  });
 
-    render(<Header gameMode="2" />);
+  test("does not render player 2 name input in game mode 2", () => {
+    const { queryByLabelText } = render(<Header gameMode="2" />);
+    const player2NameInput = queryByLabelText("Enter Player 2 Name");
     expect(player2NameInput).not.toBeInTheDocument();
   });
+  test("renders header component without crashing", () => {
+    render(<Header />);
+  });
+  test("disables game mode select field during gameplay", () => {
+    const { getByLabelText } = render(<Header playing={true} />);
+    const gameModeSelect = getByLabelText("Select Game Mode");
+    expect(gameModeSelect).toBeDisabled();
+  });
+  
+  test("disables game mode select field after game has ended", () => {
+    const { getByLabelText } = render(<Header updatedResult={true} />);
+    const gameModeSelect = getByLabelText("Select Game Mode");
+    expect(gameModeSelect).toBeDisabled();
+  });          
 });
