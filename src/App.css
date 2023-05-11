@@ -20,17 +20,17 @@
 
 /* Styles for rock selection */
 .rock {
-  color: #f3eded; /* Rock color */
+  color: #e01616; /* Rock color */
 }
 
 /* Styles for paper selection */
 .paper {
-  color: #eaf0f2; /* Paper color */
+  color: #0b84ad; /* Paper color */
 }
 
 /* Styles for scissor selection */
 .scissor {
-  color: #eaebf0; /* Scissor color */
+  color: #08a836; /* Scissor color */
 }
 
 /* Styles for buttons */

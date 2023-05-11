@@ -24,7 +24,7 @@ function App() {
     <div className="App">
       <Header player1={player1} player2={player2}  gameMode={gameMode} setGameMode={setGameMode} 
       setPlayer1={setPlayer1} setPlayer2={setPlayer2} updatedResult={updatedResult} playing={playing}/>
-      <h1 className='sub-title'> Let's play the game </h1>
+      <h1 className='sub-title'>Let's play the game</h1>
       
       <Selection player1={player1} player2={player2}  gameMode={gameMode} setGameMode={setGameMode} 
       setResults={setResults} results={results} updatedResult={updatedResult} setUpdatedResult={setUpdatedResult}

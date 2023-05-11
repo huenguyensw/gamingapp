@@ -35,7 +35,7 @@ const Selection = ({ gameMode, setGameMode, player1, player2,
   }
    return (
     <div className='selection'>
-        <p>Score: {player1TotalScore&&player1TotalScore} vs {player2TotalScore&&player2TotalScore} </p>
+        <p>Score: {player1TotalScore&&player1TotalScore} vs {player2TotalScore&&player2TotalScore}</p>
         <h2 data-testid='winner'>{winner&& `${winner}`}</h2>
         {gameMode == 1
           ? (<div className='playing-container'>
