@@ -59,5 +59,29 @@ describe("Header component", () => {
     const { getByLabelText } = render(<Header updatedResult={true} />);
     const gameModeSelect = getByLabelText("Select Game Mode");
     expect(gameModeSelect).toBeDisabled();
-  });          
+  });
+  test("enables player 2 name input field in game mode 1", () => {
+    const { getByLabelText } = render(<Header gameMode="1" />);
+    const player2NameInput = getByLabelText("Enter Player 2 Name");
+    expect(player2NameInput).toBeEnabled();
+  });
+  test("calls handleGameModeChange function when game mode is changed", () => {
+    const handleGameModeChange = jest.fn();
+    const { getByLabelText } = render(
+      <Header setGameMode={handleGameModeChange} gameMode="1" />
+    );
+    const gameModeSelect = getByLabelText("Select Game Mode");
+    fireEvent.change(gameModeSelect, { target: { value: "2" } });
+    expect(handleGameModeChange).toHaveBeenCalledTimes(1);
+  });
+  test("calls handlePlayer2NameChange function when player 2 name is changed", () => {
+    const handlePlayer2NameChange = jest.fn();
+    const { getByLabelText } = render(
+      <Header setPlayer2={handlePlayer2NameChange} gameMode="1" />
+    );
+    const player2NameInput = getByLabelText("Enter Player 2 Name");
+    fireEvent.change(player2NameInput, { target: { value: "Jane" } });
+    expect(handlePlayer2NameChange).toHaveBeenCalledTimes(1);
+  });
+                
 });
