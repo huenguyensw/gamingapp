@@ -14,7 +14,7 @@ describe("userSelectionForm", () => {
         expect(playerNameElement).toBeInTheDocument()
     })
 
-    test("text 'Picked random' should be shown when playerName is 'computer'", () => {
+    test("text 'Picked random' should be rendered when player is 'computer'", () => {
         //Given
         const playerName = 'computer';
 
