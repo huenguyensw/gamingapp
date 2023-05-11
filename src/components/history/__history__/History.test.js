@@ -38,4 +38,20 @@ describe('History', () => {
     expect(setPlayer1TotalScore).toHaveBeenCalledWith(3);
     expect(setPlayer2TotalScore).toHaveBeenCalledWith(0);
   });
+  it('should render the correct number of rows when both players have less than 10 results', () => {
+    const results = {
+    'Player 1': [0, 2, 1],
+    'Player 2': [1, 0, 2]
+    };
+    render(
+    <History
+       results={results}
+       setPlayer1TotalScore={setPlayer1TotalScore}
+       setPlayer2TotalScore={setPlayer2TotalScore}
+     />
+    );
+    expect(screen.getByText('Player 1 (3)')).toBeInTheDocument();
+    expect(screen.getByText('Player 2 (0)')).toBeInTheDocument();
+    expect(screen.getAllByRole('row').length).toBe(3);
+    });
 });
