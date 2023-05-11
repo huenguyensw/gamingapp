@@ -33,7 +33,7 @@ const History = ({ results,setPlayer1TotalScore, setPlayer2TotalScore}) => {
 
   return (
     <div className='history-container'>
-      <h3> Moves</h3>
+      <h3>Moves</h3>
       <hr />
     <table className='history'>
       <thead>
