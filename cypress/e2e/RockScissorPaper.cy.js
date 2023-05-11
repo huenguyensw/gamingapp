@@ -149,24 +149,4 @@ describe("Demo tests", () => {
         cy.get('.selection > :nth-child(1)').should('have.text', "Score: 0 vs 1");
     })
 
-
-
-    
-
-
-    // it("Should be able to visit our site", () => {
-
-    //     cy.visit("http://localhost:3000")
-
-    //     cy.get('input[placeholder="Add comment ..."]').type("Hej")
-
-    //     cy.get('[data-cy="addBtn"]').click()
-
-    //     cy.get(".comment")
-    //         .should('have.length', 2)
-    //         .last()
-    //         .should('have.text', "Hej")
-
-    // })
-
 })

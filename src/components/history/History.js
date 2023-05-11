@@ -54,7 +54,7 @@ const History = ({ results,setPlayer1TotalScore, setPlayer2TotalScore}) => {
           
           return (
             <tr key={idx}>
-              <td style={{fontSize: '1.3rem'}}>{keys[0]}({val1 == 0 ? 'rock' : val1 == 1 ? 'scissor' : 'paper'})</td>
+              <td style={{fontSize: '1.5rem'}}>{keys[0]}({val1 == 0 ? 'rock' : val1 == 1 ? 'scissor' : 'paper'})</td>
               <td>{keys[1]}({val2 == 0 ? 'rock' : val2 == 1 ? 'scissor' : 'paper'})</td>
             </tr>);
         } else if (val2 == val1 - 1 || val1 == val2 - 2) {
@@ -62,7 +62,7 @@ const History = ({ results,setPlayer1TotalScore, setPlayer2TotalScore}) => {
           return (
             <tr key={idx}>
               <td>{keys[0]}({val1 == 0 ? 'rock' : val1 == 1 ? 'scissor' : 'paper'})</td>
-              <td style={{fontSize: '1.3rem'}}>{keys[1]}({val2 == 0 ? 'rock' : val2 == 1 ? 'scissor' : 'paper'})</td>
+              <td style={{fontSize: '1.5rem'}}>{keys[1]}({val2 == 0 ? 'rock' : val2 == 1 ? 'scissor' : 'paper'})</td>
             </tr>);
         } else {
           return (
