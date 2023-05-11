@@ -3,7 +3,7 @@
 describe("general test cases", () => {
 
     beforeEach(()=>{
-        cy.visit("/")
+        cy.visit("http://localhost:3000")
     })
 
     it("A correct title should be shown in Header ", () => {
@@ -50,7 +50,7 @@ describe("general test cases", () => {
 describe("for only Human vs Human", () => {
 
     beforeEach(()=>{
-        cy.visit("/")
+        cy.visit("http://localhost:3000/")
     })
     /* Human vs Computer*/
     it("Human vs Human: Players can make a choice and the match result is updated correctly",()=>{
@@ -112,13 +112,12 @@ describe("for only Human vs Human", () => {
         cy.get('.selection > :nth-child(1)').should('have.text', "Score: 0 vs 1");
     })
 
-    
 });
 
 describe("for only Human vs Computer", () => {
 
     beforeEach(()=>{
-        cy.visit("/")
+        cy.visit("http://localhost:3000/")
     })
     /* Human vs Computer*/
     it(" Human vs Computer: A text 'Picked random' is displayed to show that computer's choice is random",()=>{

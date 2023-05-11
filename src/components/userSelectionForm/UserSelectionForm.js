@@ -41,7 +41,7 @@ const UserSelectionForm = ({ playerName, choiced, setChoiceOfPlayer, choiceOfPla
         setWinner(`Regretfully! ${currentResult.current[0].name}, you have lost this time. Try again!`)
       }
       else {
-        setWinner('Draw')
+        setWinner('Draw!')
       }
       
       setResults(results);
