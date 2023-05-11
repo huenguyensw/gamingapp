@@ -6,7 +6,6 @@ const Selection = ({ gameMode, setGameMode, player1, player2,
    player1TotalScore,player2TotalScore, setPlayer1TotalScore, setPlayer2TotalScore, setPlaying  }) => {
   const [choiceOfPlay1, setChoiceOfPlay1] = useState(null); //save choice of play1
   const [choiceOfPlay2, setChoiceOfPlay2] = useState(null); //save choice of play2
-  const [choiceOfComputer, setChoiceOfComputer] = useState(null); //save choice of play2
   // to handle if both players are chosen
   const choiced = useRef(0);
   const currentResult = useRef([]);
@@ -16,7 +15,6 @@ const Selection = ({ gameMode, setGameMode, player1, player2,
     setUpdatedResult(false);
     setChoiceOfPlay1(null);
     setChoiceOfPlay2(null);
-    setChoiceOfComputer(null);
     setWinner(null);
     setPlaying(true);
   }
@@ -30,7 +28,6 @@ const Selection = ({ gameMode, setGameMode, player1, player2,
     setUpdatedResult(false);
     setChoiceOfPlay1(null);
     setChoiceOfPlay2(null);
-    setChoiceOfComputer(null);
     setPlaying(false);
   }
    return (

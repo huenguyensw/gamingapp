@@ -10,7 +10,7 @@ const UserSelectionForm = ({ playerName, choiced, setChoiceOfPlayer, choiceOfPla
   
   
   const handleClick = (val) => {
-    // setUpdatedResult(false)
+    
     setChoiceOfPlayer(val);
     currentResult.current.push({name: playerName, choice: val});
     results[playerName] = (results[playerName] || []).concat([val]);

@@ -1,6 +1,6 @@
 ///<reference types="cypress" />
 
-describe("Demo tests", () => {
+describe("general test cases", () => {
 
     beforeEach(()=>{
         cy.visit("/")
@@ -45,50 +45,13 @@ describe("Demo tests", () => {
         cy.get('h3').should('have.text','Moves')
     })
 
-    /* Human vs Computer*/
-    it(" Human vs Computer: A text 'Picked random' is displayed to show that computer's choice is random",()=>{
-        cy.get('[data-testid="computerContent"]').should('have.text','Picked random')
-    })
-    it("Human vs Computer: Human can make a choice and the play result is updated",()=>{
-        cy.get('[data-testid="winner"]').should('not.be.visible');
-        cy.get('[data-testid="rockIcon"]').click();
-        cy.get(':nth-child(1) > p').should('have.text', 'You picked');
-        cy.get('[data-testid="winner"]').should('be.visible');
-    })
-    it("Human vs Computer: Game mode as well as selecting players should be locked while a game is happening", ()=>{
-        cy.get('[data-testid="rockIcon"]').click();
-        cy.get('#gameMode').should('be.disabled');
-        cy.get('#player1Name').should('be.disabled');
-    })
-    it("Human vs Computer: Player can play again after finishing the match",()=>{
-        cy.get('.playing-container').next().should('not.exist'); // make sure that 'Playing again' button is not shown when no play is executed.
-        cy.get('[data-testid="rockIcon"]').click(); // user makes a choice.
-        cy.get('.buttons > :nth-child(1)').should('be.visible'); // make sure that 'Playing again' button is displayed.
-        cy.get('.buttons > :nth-child(1)').click(); 
-        cy.get(':nth-child(1) > p').should('not.exist'); // make sure that text 'You picked' is not displayed
-        cy.get('[data-testid="winner"]').should('not.be.visible'); // the result message is not shown when the play have not begin yet.
-        cy.get('[data-testid="playingIcons"]').should('be.visible'); // icons rock-scissor-paper are shown
-        cy.get('[data-testid="rockIcon"]').click(); // user makes a choice again.
-        cy.get(':nth-child(1) > p').should('have.text', 'You picked'); // to make sure player can play again vs computer successfully.
-    })
-    it("Human vs Computer: Player can choose to end game and game mode as well as choosing player should be unlocked",()=>{
-        cy.get('.playing-container').next().should('not.exist');
-        cy.get('[data-testid="rockIcon"]').click();
-        cy.get('.buttons > :nth-child(2)').should('be.visible');
-        cy.get('.buttons > :nth-child(2)').click();
-        cy.get('#gameMode').should('not.be.disabled');
-        cy.get('#player1Name').should('not.be.disabled');
-    })
-    it('Human vs Computer: History is updated after finishing a match',()=>{
-        cy.get('tr > :nth-child(1)').should('not.have.value');
-        cy.get('tr > :nth-child(2)').should('not.have.value');
-        cy.get('[data-testid="rockIcon"]').click();
-        cy.get('thead > tr > :nth-child(1)').should('not.be.empty');
-        cy.get('thead > tr > :nth-child(2)').should('not.be.empty');
-        cy.get('tbody > tr > :nth-child(1)').should('not.be.empty');
-        cy.get('tbody > tr > :nth-child(2)').should('not.be.empty');
-    })
+})
 
+describe("for only Human vs Human", () => {
+
+    beforeEach(()=>{
+        cy.visit("/")
+    })
     /* Human vs Computer*/
     it("Human vs Human: Players can make a choice and the match result is updated correctly",()=>{
         cy.get('select.text').select('1');
@@ -149,4 +112,56 @@ describe("Demo tests", () => {
         cy.get('.selection > :nth-child(1)').should('have.text', "Score: 0 vs 1");
     })
 
-})
+    
+});
+
+describe("for only Human vs Computer", () => {
+
+    beforeEach(()=>{
+        cy.visit("/")
+    })
+    /* Human vs Computer*/
+    it(" Human vs Computer: A text 'Picked random' is displayed to show that computer's choice is random",()=>{
+        cy.get('[data-testid="computerContent"]').should('have.text','Picked random')
+    })
+    it("Human vs Computer: Human can make a choice and the play result is updated",()=>{
+        cy.get('[data-testid="winner"]').should('not.be.visible');
+        cy.get('[data-testid="rockIcon"]').click();
+        cy.get(':nth-child(1) > p').should('have.text', 'You picked');
+        cy.get('[data-testid="winner"]').should('be.visible');
+    })
+    it("Human vs Computer: Game mode as well as selecting players should be locked while a game is happening", ()=>{
+        cy.get('[data-testid="rockIcon"]').click();
+        cy.get('#gameMode').should('be.disabled');
+        cy.get('#player1Name').should('be.disabled');
+    })
+    it("Human vs Computer: Player can play again after finishing the match",()=>{
+        cy.get('.playing-container').next().should('not.exist'); // make sure that 'Playing again' button is not shown when no play is executed.
+        cy.get('[data-testid="rockIcon"]').click(); // user makes a choice.
+        cy.get('.buttons > :nth-child(1)').should('be.visible'); // make sure that 'Playing again' button is displayed.
+        cy.get('.buttons > :nth-child(1)').click(); 
+        cy.get(':nth-child(1) > p').should('not.exist'); // make sure that text 'You picked' is not displayed
+        cy.get('[data-testid="winner"]').should('not.be.visible'); // the result message is not shown when the play have not begin yet.
+        cy.get('[data-testid="playingIcons"]').should('be.visible'); // icons rock-scissor-paper are shown
+        cy.get('[data-testid="rockIcon"]').click(); // user makes a choice again.
+        cy.get(':nth-child(1) > p').should('have.text', 'You picked'); // to make sure player can play again vs computer successfully.
+    })
+    it("Human vs Computer: Player can choose to end game and game mode as well as choosing player should be unlocked",()=>{
+        cy.get('.playing-container').next().should('not.exist');
+        cy.get('[data-testid="rockIcon"]').click();
+        cy.get('.buttons > :nth-child(2)').should('be.visible');
+        cy.get('.buttons > :nth-child(2)').click();
+        cy.get('#gameMode').should('not.be.disabled');
+        cy.get('#player1Name').should('not.be.disabled');
+    })
+    it('Human vs Computer: History is updated after finishing a match',()=>{
+        cy.get('tr > :nth-child(1)').should('not.have.value');
+        cy.get('tr > :nth-child(2)').should('not.have.value');
+        cy.get('[data-testid="rockIcon"]').click();
+        cy.get('thead > tr > :nth-child(1)').should('not.be.empty');
+        cy.get('thead > tr > :nth-child(2)').should('not.be.empty');
+        cy.get('tbody > tr > :nth-child(1)').should('not.be.empty');
+        cy.get('tbody > tr > :nth-child(2)').should('not.be.empty');
+    })
+});
+
