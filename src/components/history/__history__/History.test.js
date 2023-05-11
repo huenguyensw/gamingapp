@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import History from '../History';
 
-describe('History', () => {
+describe('History with number of playes is less than 10', () => {
   const results = {
     'Player 1': [0, 2, 1],
     'Player 2': [1, 0, 2]
@@ -39,19 +39,35 @@ describe('History', () => {
     expect(setPlayer2TotalScore).toHaveBeenCalledWith(0);
   });
   it('should render the correct number of rows when both players have less than 10 results', () => {
-    const results = {
-    'Player 1': [0, 2, 1],
-    'Player 2': [1, 0, 2]
-    };
-    render(
-    <History
-       results={results}
-       setPlayer1TotalScore={setPlayer1TotalScore}
-       setPlayer2TotalScore={setPlayer2TotalScore}
-     />
-    );
-    expect(screen.getByText('Player 1 (3)')).toBeInTheDocument();
-    expect(screen.getByText('Player 2 (0)')).toBeInTheDocument();
-    expect(screen.getAllByRole('row').length).toBe(3);
+    const table = screen.getByRole('table');
+    const rows = table.rows
+    expect(rows.length).toBe(4);
     });
+
+
+});
+
+describe('History with number of plays is larger than 10',()=>{
+  const results = {
+    'Player 1': [0, 2, 1, 1, 0, 2,1, 0, 2, 1, 0, 2],
+    'Player 2': [1, 0, 2, 0, 2, 1,1, 0, 2, 1, 0, 2]
+    };
+  const setPlayer1TotalScore = jest.fn();
+  const setPlayer2TotalScore = jest.fn();
+
+  beforeEach(() => {
+    render(
+      <History
+        results={results}
+        setPlayer1TotalScore={setPlayer1TotalScore}
+        setPlayer2TotalScore={setPlayer2TotalScore}
+      />
+    );
+  });
+
+  it('should render only the latest 10 results in History table', () => {
+    const table = screen.getByRole('table');
+    const rows = table.rows
+    expect(rows.length).toBe(11);
+  });
 });
