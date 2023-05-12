@@ -6,12 +6,14 @@ describe("E2E test", () => {
         cy.visit("/")
     })
 
-    it("Two players can play against each other and their score as well as  choice is updated correctly",()=>{
+    it("Human vs Human: Two players can play against each other and their score as well as  choice is updated correctly",()=>{
         cy.get('select.text').select('1');
-        cy.get('#player1Name').type('{selectAll}Hanna');
+        cy.get('#player1Name').type('{selectAll}Hanna'); 
         cy.get('#player2Name').type('{selectAll}Maria');
         cy.get(':nth-child(1) > [data-testid="playingIcons"] > [data-testid="rockIcon"]').click(); 
+        cy.get(':nth-child(1) > p').should('have.text', 'You picked');
         cy.get(':nth-child(2) > [data-testid="playingIcons"] > [data-testid="paperIcon"]').click();
+        cy.get(':nth-child(2) > p').should('have.text', 'You picked');
         cy.get('[data-testid="winner"]').should('have.text',"Maria won!")
         cy.get('.selection > :nth-child(1)').should('have.text','Score: 0 vs 1');
         cy.get('thead > tr > :nth-child(1)').should('have.text','Hanna (0)');
@@ -20,16 +22,6 @@ describe("E2E test", () => {
         cy.get('[style="font-size: 1.5rem;"]').should('have.text', 'Maria(paper)');
     })
 
-    it("A player can play against the computer and the score is updated in the history table",()=>{
-        cy.get('select.text').select('2');
-        cy.get('#player1Name').type('{selectAll}Hanna');
-        cy.get('[data-testid="rockIcon"]').click();
-        cy.get('[data-testid="winner"]').should('be.visible');
-        cy.get('thead > tr > :nth-child(1)').should('not.be.empty');
-        cy.get('thead > tr > :nth-child(2)').should('not.be.empty');
-        cy.get('tbody > tr > :nth-child(1)').should('not.be.empty');
-        cy.get('tbody > tr > :nth-child(2)').should('not.be.empty');  
-    })
     it("Human vs Human: Player can play again after finishing a match",()=>{
         cy.get('select.text').select('1');
         cy.get('.playing-container').next().should('not.exist'); // make sure that 'Playing again' button is not shown when no play is executed.
@@ -54,9 +46,24 @@ describe("E2E test", () => {
         cy.get(':nth-child(2) > [data-testid="playingIcons"] > [data-testid="paperIcon"]').click();
         cy.get('.buttons > :nth-child(2)').should('be.visible');
         cy.get('.buttons > :nth-child(2)').click();
+        // The player is able to start a new game
         cy.get('#gameMode').should('not.be.disabled');
         cy.get('#player1Name').should('not.be.disabled');
     })
+
+    it("Human vs Computer: A player can play against the computer and the score is updated in the history table",()=>{
+        cy.get('select.text').select('2');
+        cy.get('#player1Name').type('{selectAll}Hanna');
+        cy.get('[data-testid="rockIcon"]').click();
+        cy.get(':nth-child(1) > p').should('have.text', 'You picked');
+        cy.get('[data-testid="computerContent"]').should('have.text','Picked random')
+        cy.get('[data-testid="winner"]').should('be.visible');
+        cy.get('thead > tr > :nth-child(1)').should('not.be.empty');
+        cy.get('thead > tr > :nth-child(2)').should('not.be.empty');
+        cy.get('tbody > tr > :nth-child(1)').should('not.be.empty');
+        cy.get('tbody > tr > :nth-child(2)').should('not.be.empty');  
+    })
+    
     it("Human vs Computer: Player can play again after finishing a match",()=>{
         cy.get('.playing-container').next().should('not.exist'); // make sure that 'Playing again' button is not shown when no play is executed.
         cy.get('[data-testid="rockIcon"]').click(); // user makes a choice.
