@@ -1,6 +1,6 @@
 /* Styles for the main container */
 .App {
-  background: linear-gradient(to right, #4157d3 , #eb2b2b ); /* Gradient background */
+  background-color: #061341;
   text-align: center;
   display: grid;
   grid-template-areas: 
@@ -12,7 +12,7 @@
   width: 900px;
   margin: 0px auto;
   border: 1px solid rgb(208, 208, 202);
-  padding: 10px;
+  padding: 5px;
   color: #feffff; /* Text color */
   font-family: cursive; /* Header font */
   font-style: oblique;
@@ -30,7 +30,7 @@
 
 /* Styles for scissor selection */
 .scissor {
-  color: #08a836; /* Scissor color */
+  color: #eff45c; /* Scissor color */
 }
 
 /* Styles for buttons */
@@ -67,10 +67,6 @@
   grid-area: selection;
 }
 
-/* Styles for the history table */
-/* .history tr:last-child {
-  background-color: rgb(77, 120, 77);
-} */
 
 .history th {
   padding-top: 12px;
@@ -123,7 +119,6 @@
   justify-content: space-evenly;
 }
 
-/* Styles for the game container */
 /* Styles for the game container */
 .game-container {
   display: flex;

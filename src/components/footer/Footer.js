@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div className='footer'>
       <hr/>
-      <p> &#169; Hue, Liza, Nadya och Nikola	</p>
+      <p> &#169;  Liza Tällgård	</p>
     </div>
   );
 }
